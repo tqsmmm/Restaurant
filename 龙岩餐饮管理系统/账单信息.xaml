@@ -1,0 +1,185 @@
+﻿<Page x:Class="龙岩餐饮管理系统.账单信息"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:龙岩餐饮管理系统"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="账单信息" Loaded="Page_Loaded" KeyDown="Page_KeyDown" FontSize="13">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <StackPanel Orientation="Horizontal">
+                <GroupBox Header="账单信息">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="账单编码：" VerticalAlignment="Center"/>
+                        <TextBlock Text="开台时间：" VerticalAlignment="Center" Grid.Row="1"/>
+                        <TextBlock Text="应收金额：" VerticalAlignment="Center" Grid.Row="2"/>
+                        
+                        <TextBlock Text="餐台号：" VerticalAlignment="Center" Grid.Column="2"/>
+                        <TextBlock Text="结账时间：" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1"/>
+                        <TextBlock Text="实收金额：" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2"/>
+                        
+                        <TextBlock x:Name="tbOrder_ID" VerticalAlignment="Center" Grid.Column="1"/>
+                        <TextBlock x:Name="tbStart" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+                        <TextBlock x:Name="tbTotal" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Text="0.00"/>
+                        
+                        <TextBlock x:Name="tbTable" VerticalAlignment="Center" Grid.Column="3" Grid.Row="0"/>
+                        <TextBlock x:Name="tbEnd" VerticalAlignment="Center" Grid.Column="3" Grid.Row="1"/>
+                        <TextBlock x:Name="tbAmount" VerticalAlignment="Center" Grid.Column="3" Grid.Row="2" Text="0.00"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="会员信息">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="会员编码：" VerticalAlignment="Center"/>
+                        <TextBlock Text="会员姓名：" VerticalAlignment="Center" Grid.Row="1"/>
+                        <TextBlock Text="会员余额：" VerticalAlignment="Center" Grid.Row="2"/>
+                        
+                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                            <TextBlock x:Name="tbMember_ID" VerticalAlignment="Center" Width="110"/>
+                            <Button x:Name="btnMember" Content="..." Width="40" Click="btnMember_Click"/>
+                        </StackPanel>
+                        <TextBlock x:Name="tbMember_Name" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+                        <TextBlock x:Name="tbMember_Balance" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Text="0.00"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="支付信息">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="现金支付：" VerticalAlignment="Center"/>
+                        <TextBlock Text="银行卡支付：" VerticalAlignment="Center" Grid.Row="1"/>
+                        <TextBlock Text="代金卷支付：" VerticalAlignment="Center" Grid.Row="2"/>
+                        
+                        <TextBlock x:Name="tbPay_Cash" VerticalAlignment="Center" Grid.Column="1" Text="0.00"/>
+                        <TextBlock x:Name="tbPay_Bank" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Text="0.00"/>
+                        <TextBlock x:Name="tbPay_Coupon" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Text="0.00"/>
+                        
+                        <TextBlock Text="免单支付：" VerticalAlignment="Center" Grid.Column="2"/>
+                        <TextBlock Text="会员支付：" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1"/>
+                        
+                        <TextBlock x:Name="tbPay_Exempt" VerticalAlignment="Center" Grid.Column="3" Text="0.00"/>  
+                        <TextBlock x:Name="tbPay_Member" VerticalAlignment="Center" Grid.Column="3" Grid.Row="1" Text="0.00"/>
+                    </Grid>
+                </GroupBox>
+            </StackPanel>
+        </Grid>
+        <Grid DockPanel.Dock="Bottom" Height="50">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnPreCheckout" Content="预结" Width="120" Margin="5" Click="btnPreCheckout_Click"/>
+                <Button x:Name="btnCheckout" Content="结账(F6)" Width="120" Margin="5" Click="btnCheckout_Click"/>
+                <Button x:Name="btnSave" Content="下单(F2)" Width="120" Margin="5" Click="btnCheck_Click"/>
+                <Button x:Name="btnDelete" Content="删除" Width="120" Margin="5" Click="btnDelete_Click"/>
+                <Button x:Name="btnGift" Content="赠菜" Width="120" Margin="5" Click="btnGift_Click"/>
+            </StackPanel>
+        </Grid>
+        <Grid DockPanel.Dock="Left" Width="300">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="dgItems" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" RowHeight="22" Grid.ColumnSpan="2" MouseDoubleClick="lvItems_MouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="编码" Binding="{Binding id}" Visibility="Hidden"/>
+                    <DataGridTextColumn Header="名称" Binding="{Binding Name}" Width="150"/>
+                    <DataGridTextColumn Header="单价" Binding="{Binding Price}" Width="60"/>
+                    <DataGridTextColumn Header="类型" Binding="{Binding Type}" Width="60"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock Text="助记码：" VerticalAlignment="Center" Grid.Row="1"/>
+            <TextBox x:Name="tbSearch" VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="1" TextChanged="tbSearch_TextChanged" KeyDown="tbSearch_KeyDown"/>
+        </Grid>
+        <Grid>
+            <DataGrid x:Name="dgDetail" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" RowHeight="22" MouseDoubleClick="lvDetail_MouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding id}" Visibility="Hidden"/>
+                    <DataGridTextColumn Binding="{Binding Item_ID}" Header="编码" Width="50"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="名称" Width="150"/>
+                    <DataGridTextColumn Binding="{Binding Num}" Header="数量" Width="50">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Unit}" Header="单位" Width="50">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Price}" Header="单价" Width="80">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Total}" Header="应收金额" Width="80">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Discount}" Header="打折金额" Width="80">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Amount}" Header="实收金额" Width="80">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridCheckBoxColumn Binding="{Binding Gift}" Header="赠送" Width="50">
+                        <DataGridCheckBoxColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridCheckBoxColumn.HeaderStyle>
+                    </DataGridCheckBoxColumn>
+                    <DataGridTextColumn Binding="{Binding Save}" Visibility="Hidden"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </DockPanel>
+</Page>

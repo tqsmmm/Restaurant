@@ -1,0 +1,88 @@
+﻿<Window x:Class="龙岩餐饮管理系统.frmMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="龙岩餐饮管理系统" Height="500" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded" FontSize="13" Icon="/App.ico">
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar >
+                <Button x:Name="btnStatic" Click="btnStatic_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Width="32" Height="32" Source="/PNG/餐台列表.png"/>
+                        <TextBlock Text="餐台列表" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnBills" Click="btnBills_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Width="32" Height="32" Source="/PNG/消费明细.png"/>
+                        <TextBlock Text="消费明细" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnStatistic" Click="btnStatistic_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Width="32" Height="32" Source="/PNG/菜品统计.png"/>
+                        <TextBlock Text="菜品统计" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnSettlement" Click="btnSettlement_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Width="32" Height="32" Source="/PNG/日结账单.png"/>
+                        <TextBlock Text="日结账单" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Separator/>
+                <Button x:Name="btnMembers" Click="btnMembers_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Width="32" Height="32" Source="/PNG/会员管理.png"/>
+                        <TextBlock Text="会员管理" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnHandle" Click="btnHandle_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Width="32" Height="32" Source="/PNG/会员办理.png"/>
+                        <TextBlock Text="会员办理" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Separator/>
+                <Button x:Name="btnItems" Click="btnItems_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Width="32" Height="32" Source="/PNG/菜品管理.png"/>
+                        <TextBlock Text="菜品管理" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnTables" Click="btnTables_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Width="32" Height="32" Source="/PNG/餐台管理.png"/>
+                        <TextBlock Text="餐台管理" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Separator/>
+                <Button x:Name="btnExit" Click="btnExit_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Image Width="32" Height="32" Source="/PNG/退出系统.png"/>
+                        <TextBlock Text="退出系统" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        <StatusBar DockPanel.Dock="Bottom" Height="30" FontSize="13">
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="16" Height="16" Source="/PNG/正确.png"/>
+                    <TextBlock x:Name="sbiPrint"/>
+                </StackPanel>
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem>
+                <TextBlock x:Name="sbiDateTime"/>
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem HorizontalContentAlignment="Stretch">
+                <TextBlock x:Name="sbiAppName" HorizontalAlignment="Center"/>
+            </StatusBarItem>
+        </StatusBar>
+        <Frame x:Name="fMain" NavigationUIVisibility="Hidden"/>
+    </DockPanel>
+</Window>
